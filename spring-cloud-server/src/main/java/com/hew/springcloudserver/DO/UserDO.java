@@ -1,9 +1,17 @@
 package com.hew.springcloudserver.DO;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.github.dozermapper.core.Mapping;
+import com.hew.springcloudserver.enums.SexEnum;
+import com.hew.springcloudserver.enums.UserStateEnum;
 import lombok.Data;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
@@ -15,24 +23,15 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 @TableName("user")
-public class UserDO {
-    private Long id;
+public class UserDO extends BaseDO{
     private String name;
-    @TableField(value = "id_card")
     private String idCard;
-    @TableField(value = "user_name")
     private String userName;
     private String password;
     private Integer age;
     private String avatar;
-    private Integer sex;
+    private SexEnum sex;
     private String phone;
     private String email;
-    private Integer state;
-    @TableField(value = "create_time")
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
-    @TableField(value = "update_time")
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
+    private UserStateEnum state;
 }
