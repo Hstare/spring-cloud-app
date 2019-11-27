@@ -37,7 +37,7 @@ public class UserController {
 
     @GetMapping("pageUser")
     public String pageUser(Page<UserQuery> page,UserQuery userQuery){
-        page.setSearchCount(false);
+//        page.setSearchCount(false);
         IPage<UserDTO> userDOIPage =  userService.listUser(page, userQuery);
         return JSON.toJSONString(new ResultVO<>(userDOIPage));
     }

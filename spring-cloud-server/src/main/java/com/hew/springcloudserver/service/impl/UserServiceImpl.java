@@ -21,7 +21,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
     Logger logger = LoggerFactory.getLogger(getClass());
-    Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+//    Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    @Autowired
+    Mapper mapper;
     @SuppressWarnings("all")
     @Autowired
     private UserMapper userMapper;

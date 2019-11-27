@@ -1,5 +1,6 @@
 package com.hew.springcloudserver;
 
+import com.hew.springcloudserver.BO.UserRoleBO;
 import com.hew.springcloudserver.DO.UserDO;
 import com.hew.springcloudserver.Query.UserQuery;
 import com.hew.springcloudserver.mapper.UserMapper;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 class SpringCloudServerApplicationTests {
@@ -23,8 +25,8 @@ class SpringCloudServerApplicationTests {
 
     @Test
     void contextLoads() {
-        UserDO userDO = userMapper.selectById(1);
-        System.out.println(userDO.toString());
+        List<UserRoleBO> userRoleBOS = userMapper.userRoles();
+        System.out.println(userRoleBOS);
     }
 
     @Test
@@ -33,5 +35,9 @@ class SpringCloudServerApplicationTests {
         userQuery.setAge(15).setCreateTime(new Date()).setName("王麻子2").setSex((byte)1);
         Integer integer = userService.addUser(userQuery);
         logger.info("----"+integer);
+    }
+    @Test
+    public void test11(){
+        System.out.println(111);
     }
 }

@@ -5,4 +5,20 @@
     <select id="listUser" resultType="com.hew.springcloudserver.DTO.UserDTO">
         select id,name,age,sex,state from user where state = #{userQuery.state}
     </select>
+
+    <resultMap id="userRoleBO" type="com.hew.springcloudserver.BO.UserRoleBO">
+        <id column="id" property="userDTO.id"/>
+        <result column="name" property="userDTO.name"/>
+        <result column="age" property="userDTO.sex"/>
+        <result column="state" property="userDTO.state"/>
+        <collection property="roles" ofType="com.hew.springcloudserver.DO.RoleDO">
+            <result column="role_name" property="name"/>
+            <result column="role_desc" property="roleDesc"/>
+        </collection>
+    </resultMap>
+
+    <select id="userRoles" resultMap="userRoleBO">
+        select a.id,a.name,a.age,a.sex,a.state,c.name role_name,c.role_desc from user a,user_role b,
+            role c where a.id=b.user_id and b.role_id = c.id
+    </select>
 </mapper>
