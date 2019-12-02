@@ -1,7 +1,9 @@
 package com.hew.springcloudserver;
 
+import com.github.dozermapper.core.Mapper;
 import com.hew.springcloudserver.BO.UserRoleBO;
-import com.hew.springcloudserver.DO.UserDO;
+import com.hew.springcloudserver.DO.RoleDO;
+import com.hew.springcloudserver.DTO.RoleDTO;
 import com.hew.springcloudserver.Query.UserQuery;
 import com.hew.springcloudserver.mapper.UserMapper;
 import com.hew.springcloudserver.service.UserService;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +25,9 @@ class SpringCloudServerApplicationTests {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    Mapper mapper;
 
     @Test
     void contextLoads() {
@@ -38,6 +44,22 @@ class SpringCloudServerApplicationTests {
     }
     @Test
     public void test11(){
-        System.out.println(111);
+        List<RoleDTO> roleDOS = userMapper.allRoles();
+        ArrayList<RoleDTO> objects = new ArrayList<>();
+        for(RoleDTO role: roleDOS){
+            RoleDTO map = mapper.map(role, RoleDTO.class);
+            objects.add(map);
+        }
+        logger.info(String.valueOf(objects.toString()));
+    }
+    @Test
+    public void test12() {
+        List<RoleDTO> roleDTOS = userService.allRoles();
+        logger.info(roleDTOS.toString());
+    }
+    @Test
+    public void test13() {
+        List<RoleDTO> roleDOS = userMapper.allRoles();
+        logger.info(roleDOS.toString());
     }
 }

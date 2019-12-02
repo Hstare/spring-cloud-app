@@ -11,7 +11,11 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PermissionTypeEnum implements IEnum<Byte> {
-    VISITER((byte)0,"可访问"),AUTHORIZED((byte)1,"可授权");
+    /**
+     * 权限类型
+     */
+    VISITOR((byte)0,"可访问"),
+    AUTHORIZED((byte)1,"可授权");
     private byte value;
     private String desc;
 

@@ -25,10 +25,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
@@ -65,12 +61,28 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-server</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-nacos</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-common</artifactId>
+                <version>${version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
         <module>spring-cloud-server</module>
         <module>spring-cloud-nacos</module>
+        <module>spring-cloud-common</module>
     </modules>
 
     <build>

@@ -3,11 +3,10 @@ package com.hew.springcloudserver.controller;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hew.springcloudserver.DO.UserDO;
+import com.hew.springcloudcommon.VO.ResultVO;
+import com.hew.springcloudserver.DTO.RoleDTO;
 import com.hew.springcloudserver.DTO.UserDTO;
 import com.hew.springcloudserver.Query.UserQuery;
-import com.hew.springcloudserver.VO.ResultVO;
 import com.hew.springcloudserver.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 /**
  * @author HeXiaoWei
@@ -37,8 +36,13 @@ public class UserController {
 
     @GetMapping("pageUser")
     public String pageUser(Page<UserQuery> page,UserQuery userQuery){
-//        page.setSearchCount(false);
         IPage<UserDTO> userDOIPage =  userService.listUser(page, userQuery);
         return JSON.toJSONString(new ResultVO<>(userDOIPage));
+    }
+
+    @GetMapping("roles")
+    public String roles(){
+        List<RoleDTO> roleDTOS = userService.allRoles();
+        return JSON.toJSONString(new ResultVO<>(roleDTOS));
     }
 }

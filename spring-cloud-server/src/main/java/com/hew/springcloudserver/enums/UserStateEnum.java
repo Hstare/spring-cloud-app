@@ -11,6 +11,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum UserStateEnum implements IEnum<Byte> {
+    /**
+     * 用户状态
+     */
     NORMAL((byte) 0,"正常状态"), LOCKED((byte) 1,"被锁定"),OBSOLETE((byte) 2,"已废弃");
 
     private Byte value;

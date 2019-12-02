@@ -12,6 +12,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum  SexEnum implements IEnum<Byte> {
+    /**
+     * 性别
+     */
     MALE((byte)0,"男"), FEMALE((byte)1,"女");
 
     private byte value;

@@ -1,10 +1,7 @@
 package com.hew.springcloudserver.DTO;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.hew.springcloudserver.enums.SexEnum;
-import com.hew.springcloudserver.enums.UserStateEnum;
 import lombok.Data;
-import lombok.ToString;
 
 import java.util.Date;
 

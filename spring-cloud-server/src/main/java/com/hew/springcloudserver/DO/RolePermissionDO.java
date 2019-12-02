@@ -3,6 +3,7 @@ package com.hew.springcloudserver.DO;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hew.springcloudserver.enums.PermissionTypeEnum;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -12,6 +13,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors( chain = true )
 @TableName("role_permission")
+@EqualsAndHashCode(callSuper = false)
 public class RolePermissionDO {
     private int role_id;
     private int permission_id;

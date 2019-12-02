@@ -1,8 +1,10 @@
 package com.hew.springcloudserver.DO;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 /**
  * @author HeXiaoWei
@@ -10,7 +12,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors( chain = true)
-@TableName("role")
+@EqualsAndHashCode(callSuper = false)
 public class RoleDO extends BaseDO{
     private Integer parentId;
     private String name;

@@ -1,4 +1,4 @@
-package com.hew.springcloudserver.customException;
+package com.hew.springcloudcommon.exception;
 
 /**
  * @author HeXiaoWei

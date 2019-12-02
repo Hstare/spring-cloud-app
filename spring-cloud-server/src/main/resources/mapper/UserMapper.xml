@@ -21,4 +21,27 @@
         select a.id,a.name,a.age,a.sex,a.state,c.name role_name,c.role_desc from user a,user_role b,
             role c where a.id=b.user_id and b.role_id = c.id
     </select>
+
+    <resultMap id="roles" type="com.hew.springcloudserver.DTO.RoleDTO">
+        <id column="id" property="roleDO.id"/>
+        <result column="parent_id" property="roleDO.parentId"/>
+        <result column="name" property="roleDO.name"/>
+        <result column="role_desc" property="roleDO.roleDesc"/>
+        <result column="create_time" property="roleDO.createTime"/>
+        <result column="update_time" property="roleDO.updateTime"/>
+        <collection property="roles" ofType="com.hew.springcloudserver.DTO.RoleDTO" select="childRoles" column="id">
+            <id column="id" property="roles.id"/>
+            <result column="parent_id" property="roles.parentId"/>
+            <result column="name" property="roles.name"/>
+            <result column="role_desc" property="roles.roleDesc"/>
+            <result column="create_time" property="roles.createTime"/>
+            <result column="update_time" property="roles.updateTime"/>
+        </collection>
+    </resultMap>
+    <select id="allRoles" resultMap="roles">
+        select id,parent_id,name ,role_desc,create_time,update_time from role WHERE parent_id = 0
+    </select>
+    <select id="childRoles" resultMap="roles">
+        select id,parent_id,name ,role_desc,create_time,update_time from role WHERE parent_id = #{id}
+    </select>
 </mapper>

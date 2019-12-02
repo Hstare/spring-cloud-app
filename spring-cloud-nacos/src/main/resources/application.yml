@@ -12,3 +12,7 @@ management:
     web:
       exposure:
         include: *
+        exclude: end,beans
+
+
+info.version: @project.version@

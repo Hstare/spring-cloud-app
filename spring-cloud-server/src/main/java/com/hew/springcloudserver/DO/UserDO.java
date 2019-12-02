@@ -1,20 +1,15 @@
 package com.hew.springcloudserver.DO;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.github.dozermapper.core.Mapping;
 import com.hew.springcloudserver.enums.SexEnum;
 import com.hew.springcloudserver.enums.UserStateEnum;
 import lombok.Data;
-import lombok.Getter;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author HeXiaoWei
@@ -23,15 +18,19 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 @TableName("user")
+@EqualsAndHashCode(callSuper = false)
 public class UserDO extends BaseDO{
+    @NotNull(message = "姓名不能为空")
     private String name;
     private String idCard;
     private String userName;
     private String password;
+    @Min(value = 0)
     private Integer age;
     private String avatar;
     private SexEnum sex;
     private String phone;
+    @Email(message = "邮箱格式不正确")
     private String email;
     private UserStateEnum state;
 }

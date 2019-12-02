@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-public class BaseDO {
+public abstract class BaseDO implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")

@@ -1,8 +1,5 @@
 package com.hew.springcloudserver.Query;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.hew.springcloudserver.enums.SexEnum;
-import com.hew.springcloudserver.enums.UserStateEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
