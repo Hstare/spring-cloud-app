@@ -5,15 +5,26 @@ spring:
     password: root
 #    以下mvc和resources均是扔出404错误
   mvc:
+    #    Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
     throw-exception-if-no-handler-found: true
-  #    Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
   thymeleaf:
     cache: false
   resources:
 #    whether to enable default resource handling
     add-mappings: false
-#logging:
-#  level:
-#    com.hew.springcloudserver.mapper: debug
+  application:
+    name: spring-cloud-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 mybatis-plus:
   type-enums-package: com.hew.springcloudserver.enums
+
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocol:
+    name: dubbo
+    port: -1
