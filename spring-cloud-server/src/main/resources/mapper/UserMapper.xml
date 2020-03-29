@@ -44,4 +44,11 @@
     <select id="childRoles" resultMap="roles">
         select id,parent_id,name ,role_desc,create_time,update_time from role WHERE parent_id = #{id}
     </select>
+    <select id="getUserState" resultType="java.lang.Byte">
+        select state from user where id = #{id}
+    </select>
+
+    <select id="getUserByUserName" resultType="com.hew.springcloudserver.DTO.UserDTO">
+        select * from user where user_name = #{userName}
+    </select>
 </mapper>

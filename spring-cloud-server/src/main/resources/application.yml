@@ -1,30 +1,36 @@
+server:
+  port: 8070
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/spring_cloud_app?useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: root
-#    以下mvc和resources均是扔出404错误
-  mvc:
-    #    Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
-    throw-exception-if-no-handler-found: true
-  thymeleaf:
-    cache: false
-  resources:
-#    whether to enable default resource handling
-    add-mappings: false
   application:
+    # Dubbo 应用名称
     name: spring-cloud-server
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+  main:
+    #Spring Boot 2.1 以及更高的版本增加该设定，因为 Spring Boot 默认调整了 Bean 定义覆盖行为
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
 mybatis-plus:
   type-enums-package: com.hew.springcloudserver.enums
 
-
 dubbo:
   registry:
-    address: nacos://127.0.0.1:8848
+    # 挂载到 Spring Cloud 注册中心
+    address: spring-cloud://127.0.0.1:8848
   protocol:
+    # dubbo 协议
     name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
     port: -1
+  cloud:
+    #订阅本身，防止报warn
+    subscribed-services: spring-cloud-server

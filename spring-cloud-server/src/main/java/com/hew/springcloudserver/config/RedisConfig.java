@@ -6,7 +6,8 @@ import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
-import static io.lettuce.core.ReadFrom.REPLICA_PREFERRED;
+//import static io.lettuce.core.ReadFrom.MASTER_PREFERRED;
+//import static io.lettuce.core.ReadFrom.REPLICA_PREFERRED;
 /**
  * @author HeXiaoWei
  * @date 2019/11/21 22:16

@@ -1,8 +1,11 @@
-package com.hew.springcloudserver.Query;
+package com.hew.springclouddubboapi.Query;
 
+import com.hew.springclouddubboapi.pagination.Page;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +14,8 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-public class UserQuery {
+@EqualsAndHashCode(callSuper = false)
+public class UserQuery extends Page<UserQuery>{
     private Long id;
     private String name;
     private String idCard;

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+        <version>2.1.10.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hew</groupId>
@@ -14,17 +14,22 @@
     <name>spring-cloud-app</name>
     <description>Demo project for Spring Boot</description>
 
+    <packaging>pom</packaging>
+
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
         <fastjson.version>1.2.26</fastjson.version>
-        <dubbo.version>2.6.7</dubbo.version>
+        <dubbo.version>2.1.1.RELEASE</dubbo.version>
+        <spring-boot.version>2.1.10.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -32,10 +37,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -47,6 +48,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -63,16 +70,37 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--<dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
+            <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${spring-boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-dubbo</artifactId>
+                <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>-->
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- 使用springcloud组件 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -81,14 +109,29 @@
                 <artifactId>spring-cloud-server</artifactId>
                 <version>${version}</version>
             </dependency>
-            <!--<dependency>
+            <dependency>
                 <groupId>com.hew</groupId>
-                <artifactId>spring-cloud-pc</artifactId>
+                <artifactId>spring-cloud-api</artifactId>
                 <version>${version}</version>
-            </dependency>-->
+            </dependency>
             <dependency>
                 <groupId>com.hew</groupId>
                 <artifactId>spring-cloud-common</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-dubbo-api</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-gateway</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hew</groupId>
+                <artifactId>spring-cloud-auth</artifactId>
                 <version>${version}</version>
             </dependency>
         </dependencies>
@@ -97,6 +140,10 @@
     <modules>
         <module>spring-cloud-server</module>
         <module>spring-cloud-common</module>
+        <module>spring-cloud-api</module>
+        <module>spring-cloud-dubbo-api</module>
+        <module>spring-cloud-gateway</module>
+        <module>spring-cloud-auth</module>
     </modules>
 
     <build>

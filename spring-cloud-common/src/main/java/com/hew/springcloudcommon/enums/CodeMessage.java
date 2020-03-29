@@ -31,10 +31,10 @@ public enum CodeMessage {
     BAD_GATEWAY(502,"网关错误"),
     SERVICE_UNAVAILABLE(503,"服务不可用，服务器暂时过载或维护"),
     GATEWAY_TIME_OUT(504,"网关超时"),
+    NETWORK_AUTHENTICATION_REQUIRED(511,"需要网络身份验证"),
     /**
      * 自定义异常消息
      */
-
     INVALID_PARAM(1000,"无效参数"),
     ERROR(-1,"");
 

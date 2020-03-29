@@ -1,0 +1,24 @@
+#server:
+#  port: 8080
+spring:
+  # Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
+  mvc:
+    throw-exception-if-no-handler-found: true
+    # whether to enable default resource handling
+  resources:
+    add-mappings: false
+  main:
+    # Spring Boot 2.1
+    allow-bean-definition-overriding: true
+  application:
+    # Dubbo
+    name: spring-cloud-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+dubbo:
+#  registry:
+#    address: spring-cloud://127.0.0.1:8848
+  cloud:
+    subscribed-services: spring-cloud-server

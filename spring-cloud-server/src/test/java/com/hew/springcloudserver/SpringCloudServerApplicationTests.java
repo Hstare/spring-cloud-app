@@ -1,12 +1,12 @@
 package com.hew.springcloudserver;
 
 import com.github.dozermapper.core.Mapper;
+import com.hew.springclouddubboapi.Query.UserQuery;
 import com.hew.springcloudserver.BO.UserRoleBO;
-import com.hew.springcloudserver.DO.RoleDO;
 import com.hew.springcloudserver.DTO.RoleDTO;
-import com.hew.springcloudserver.Query.UserQuery;
 import com.hew.springcloudserver.mapper.UserMapper;
 import com.hew.springcloudserver.service.UserService;
+//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

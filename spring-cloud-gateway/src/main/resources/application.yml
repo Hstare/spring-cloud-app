@@ -1,0 +1,45 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+
+#      loadbalancer:
+#        use404: true
+      routes:
+        - id: spring-cloud-api
+          uri: lb://spring-cloud-api
+          predicates:
+#            - Method=GET,POST,PUT,DELETE
+            - Path=/user/**
+#          filters:
+#            - RedirectTo=403,
+        - id: spring-cloud-auth
+          uri: lb://spring-cloud-auth
+          predicates:
+            - Path=/auth/**
+      discovery:
+        locator:
+          lower-case-service-id: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: gateway,refresh
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+

@@ -5,6 +5,7 @@ import com.hew.springcloudserver.DTO.UserDTO;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Data
 @Accessors( chain = true )
-public class UserRoleBO {
+public class UserRoleBO implements Serializable {
     private UserDTO userDTO;
     private List<RoleDO> roles;
 }

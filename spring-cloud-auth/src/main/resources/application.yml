@@ -1,0 +1,17 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: spring-cloud-auth
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+# 外部
+auth:
+  UrlJwkProvider:
+    url: https://h-stare.auth0.com   #https://h-stare.auth0.com/.well-known/jwks.json

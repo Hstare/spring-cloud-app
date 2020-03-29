@@ -2,9 +2,9 @@ package com.hew.springcloudserver.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hew.springclouddubboapi.Query.UserQuery;
 import com.hew.springcloudserver.DTO.RoleDTO;
 import com.hew.springcloudserver.DTO.UserDTO;
-import com.hew.springcloudserver.Query.UserQuery;
 
 import java.util.List;
 
@@ -14,7 +14,9 @@ import java.util.List;
  */
 public interface UserService {
     UserDTO getUserById(UserQuery userQuery);
+    UserDTO getUserByUserName(String userName);
     IPage<UserDTO> listUser(Page<UserQuery> page, UserQuery userQuery);
     Integer addUser(UserQuery userQuery);
     List<RoleDTO> allRoles();
+    Byte getUserState(Long id);
 }

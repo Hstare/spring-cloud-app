@@ -3,10 +3,10 @@ package com.hew.springcloudserver.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.dozermapper.core.Mapper;
+import com.hew.springclouddubboapi.Query.UserQuery;
 import com.hew.springcloudserver.DO.UserDO;
 import com.hew.springcloudserver.DTO.RoleDTO;
 import com.hew.springcloudserver.DTO.UserDTO;
-import com.hew.springcloudserver.Query.UserQuery;
 import com.hew.springcloudserver.mapper.UserMapper;
 import com.hew.springcloudserver.service.UserService;
 import org.slf4j.Logger;
@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO getUserByUserName(String userName) {
+        return userMapper.getUserByUserName(userName);
+    }
+
+    @Override
     public IPage<UserDTO> listUser(Page<UserQuery> page, UserQuery userQuery) {
         return userMapper.listUser(page, userQuery);
     }
@@ -53,6 +58,11 @@ public class UserServiceImpl implements UserService {
     public List<RoleDTO> allRoles() {
         List<RoleDTO> roleDTOS = userMapper.allRoles();
         return roleDTOS;
+    }
+
+    @Override
+    public Byte getUserState(Long id) {
+        return userMapper.getUserState(id);
     }
 
 }

@@ -14,13 +14,21 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.hew</groupId>
             <artifactId>spring-cloud-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hew</groupId>
+            <artifactId>spring-cloud-dubbo-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
