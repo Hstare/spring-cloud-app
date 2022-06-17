@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>8</java.version>
-        <fastjson.version>1.2.26</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <dubbo.version>2.1.1.RELEASE</dubbo.version>
         <spring-boot.version>2.1.10.RELEASE</spring-boot.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
